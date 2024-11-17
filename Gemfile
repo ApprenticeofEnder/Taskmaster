@@ -57,3 +57,5 @@ gem "email_spec", "~> 2.3", :groups => [:development, :test]
 gem "graphql", "~> 2.4"
 
 gem "graphiql-rails", "~> 1.10", :group => :development
+
+gem "propshaft", "~> 1.1"
