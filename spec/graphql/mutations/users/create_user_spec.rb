@@ -60,17 +60,19 @@ RSpec.describe '#signUp mutation' do
     expect(result.dig('data', 'createUser', 'errors', 'fullMessages')).to include('Email is invalid')
   end
 
-  it "fails in case of no password" do
+  it 'fails in case of no password' do
     result = TaskmasterSchema.execute(mutation, variables: {
-      name: FFaker::Name.name,
-      email: FFaker::Internet.email,
-      password: ""
-    })
+                                        name: FFaker::Name.name,
+                                        email: FFaker::Internet.email,
+                                        password: ''
+                                      })
 
-    expect(result.dig("data", "createUser", "user")).to be_nil
-    expect(result.dig("data", "createUser", "success")).to eq(false)
-    expect(result.dig("data", "createUser", "errors", "details")).to eq("{\"password\":[{\"error\":\"blank\"},{\"error\":\"too_short\",\"count\":8}]}")
-    expect(result.dig("data", "createUser", "errors", "fullMessages")).to include("Password can't be blank")
-    expect(result.dig("data", "createUser", "errors", "fullMessages")).to include("Password is too short (minimum is 8 characters)")
+    expect(result.dig('data', 'createUser', 'user')).to be_nil
+    expect(result.dig('data', 'createUser', 'success')).to eq(false)
+    expect(result.dig('data', 'createUser', 'errors',
+                      'details')).to eq('{"password":[{"error":"blank"},{"error":"too_short","count":8}]}')
+    expect(result.dig('data', 'createUser', 'errors', 'fullMessages')).to include("Password can't be blank")
+    expect(result.dig('data', 'createUser', 'errors',
+                      'fullMessages')).to include('Password is too short (minimum is 8 characters)')
   end
 end

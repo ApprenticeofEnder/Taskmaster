@@ -65,3 +65,5 @@ gem 'rubocop-graphql', group: :development
 gem 'rubocop-rails', group: :development
 gem 'rubocop-rspec', group: :development
 gem 'rubocop-rspec_rails', group: :development
+
+gem 'jwt', '~> 2.9'
