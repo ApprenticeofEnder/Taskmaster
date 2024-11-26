@@ -7,7 +7,7 @@ module Mutations
     input_object_class Types::BaseInputObject
     object_class Types::BaseObject
 
-    field :success, Boolean
     field :errors, [String]
+    field :success, Boolean
   end
 end

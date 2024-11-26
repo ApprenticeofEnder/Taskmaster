@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    email { "MyString" }
-    password_digest { "MyString" }
+    name { FFaker::Name.name }
+    email { FFaker::Internet.email }
+    password_digest { SecureRandom.hex }
   end
 end

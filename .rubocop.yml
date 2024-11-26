@@ -1,0 +1,6 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-graphql
+  - rubocop-rspec_rails

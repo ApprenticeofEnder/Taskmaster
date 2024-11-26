@@ -1,9 +1,9 @@
-require "spec_helper"
-ENV["RAILS_ENV"] ||= "test"
-require_relative "../config/environment"
+require 'spec_helper'
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
-require "rspec/rails"
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+require 'rspec/rails'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -20,10 +20,10 @@ RSpec.configure do |config|
 
   ### Database Cleaner
   config.before(:suite) { DatabaseCleaner.clean_with(:truncation) }
-  config.before(:each) { DatabaseCleaner.strategy = :transaction }
-  config.before(:each, js: true) { DatabaseCleaner.strategy = :truncation }
-  config.before(:each) { DatabaseCleaner.start }
-  config.after(:each) { DatabaseCleaner.clean }
+  config.before { DatabaseCleaner.strategy = :transaction }
+  config.before(:each, :js) { DatabaseCleaner.strategy = :truncation }
+  config.before { DatabaseCleaner.start }
+  config.after { DatabaseCleaner.clean }
 end
 
 Shoulda::Matchers.configure do |config|
